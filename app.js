@@ -4,6 +4,15 @@
  * @author João Victor
  */
 
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('sw.js')
+        .then(() => {
+            console.log("Service worker registrado!")
+        })
+}
+
+
 function sortear() {
     let nipes = ['♥','♦','♣','♠'];
     let faces = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
