@@ -5,47 +5,41 @@
  */
 
 function sortear() {
-    let nipes = ['♥','♦','♣','♠']
-    let faces = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"]
+    let nipes = ['♥','♦','♣','♠'];
+    let faces = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
 
-    //sorteio do indice do vetor
-    let nipeSorteado = nipes[Math.floor(Math.random() * 4)] // 0 1 2 3 
-    let faceSorteada = faces[Math.floor(Math.random() * 13)] 
-   // console.log(`${faceSorteada} de ${nipeSorteado}`)
+    // Sorteio do índice do vetor
+    let nipeSorteado = nipes[Math.floor(Math.random() * nipes.length)];
+    let faceSorteada = faces[Math.floor(Math.random() * faces.length)];
 
-   //Determinar a cor com base no nipe sorteado
-   let cor
-   if(nipeSorteado === '♥' || nipeSorteado === '♦') {
-    cor = '#ff0000'
-   }else{
-    cor = '#000'
-   }
+    // Determinar a cor com base no nipe sorteado
+    let cor = (nipeSorteado === '♥' || nipeSorteado === '♦') ? '#ff0000' : '#000';
 
-//renderizar o canto superior esquerdo da carta
-//a linha abaixo adiciona a div identificada como 'supEsq' a face e o nipe sorteado e tambem tags <div> adicionais
-document.getElementById('supEsq').innerHTML = `<div>${faceSorteada}</div> <div>${nipeSorteado}</div>`
-//a linha abaixo muda o css ref a tag identificada
-document.getElementById('supEsq').style.color = cor
+    // Renderizar o canto superior esquerdo da carta
+    document.getElementById('supEsq').innerHTML = `<div>${faceSorteada}</div> <div>${nipeSorteado}</div>`;
+    document.getElementById('supEsq').style.color = cor;
 
-//rendernizar o centro da carta
-let cc = document.getElementById('centroCarta')
-if(faceSorteada === 'J'){
-    cc.innerHTML = `<img src = "./img/valete.png"`
-}else if (faceSorteada === 'Q'){
-    cc.innerHTML = `<img src = "./img/dama.png"`
-}else if( faceSorteada === 'Q'){
-    cc.innerHTML = `<img src = "./img/rei.png"`
-}else{
-    cc.innerHTML = `${nipeSorteado}`
-    cor.style.color = cor
+    // Renderizar o centro da carta
+    let cc = document.getElementById('centroCarta');
+    if (faceSorteada === 'J') {
+        cc.innerHTML = `<img src="./img/valete.png" alt="Valete" width="100" height="100">`;
+    } else if (faceSorteada === 'Q') {
+        cc.innerHTML = `<img src="./img/dama.png" alt="Dama" width="100" height="100">`;
+    } else if (faceSorteada === 'K') {
+        cc.innerHTML = `<img src="./img/rei.png" alt="Rei" width="100" height="100">`;
+    } else {
+        cc.innerHTML = `${nipeSorteado}`;
+        cc.style.color = cor;
+    }
+
+    // Renderizar o canto inferior direito da carta
+    document.getElementById('infDir').innerHTML = `<div>${faceSorteada}</div> <div>${nipeSorteado}</div>`;
+    document.getElementById('infDir').style.color = cor;
 }
 
-
-cc.innerHTML = `${nipeSorteado}`
-cc.style.color = cor
-
-//renderizar o canto inferior direito da carta
-document.getElementById('infDir').innerHTML = `<div>${faceSorteada}</div> <div>${nipeSorteado}</div>`
-document.getElementById('infDir').style.color = cor
+// Registrar Service Worker para PWA
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('Service Worker registrado!'))
+        .catch(err => console.error('Erro no Service Worker:', err));
 }
-
