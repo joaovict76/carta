@@ -1,5 +1,5 @@
 
-self.addEventListener('install', event => {
+self.addEventListener('install', (event) => {
     event.waitUntil(
       caches.open('static')
       .then ((cache) => {
