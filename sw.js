@@ -1,4 +1,4 @@
-// sw.js - Service Worker
+
 self.addEventListener('install', event => {
     event.waitUntil(
       caches.open('static')
