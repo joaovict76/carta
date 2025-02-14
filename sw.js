@@ -3,14 +3,14 @@ self.addEventListener('install', event => {
     event.waitUntil(
       caches.open('carta-cache').then(cache => {
         return cache.addAll([
-          './index.html',
-          './style.css',
-          './app.js',
-          './img/valete.png',
-          './img/dama.png',
-          './img/rei.png',
-          './img/icon-192x192.png',
-          './img/icon-512x512.png'
+          './carta/index.html',
+          './carta/style.css',
+          './carta/app.js',
+          './carta/img/valete.png',
+          './carta/img/dama.png',
+          './carta/img/rei.png',
+          './carta/img/icon-192x192.png',
+          './carta/img/icon-512x512.png'
         ]);
       })
     );
